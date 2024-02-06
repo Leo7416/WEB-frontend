@@ -1,0 +1,32 @@
+.nav-item {
+    margin-right: 10px;
+}
+
+.cart {
+    font-size: 25px;
+}
+  
+.cart-icon {
+    position: relative; /* Относительное позиционирование элемента корзины */
+    display: inline-block; /* Делаем блочным элемент, чтобы иметь возможность задавать ширину и высоту */
+}
+  
+.cart-badge {
+    background-color: #ff0000; /* Цвет фона бейджа */
+    color: #ffffff; /* Цвет текста бейджа */
+    border-radius: 50%; /* Круглые углы для круглой формы */
+    padding: 0.2rem 0.5rem; /* Внутренние отступы */
+    font-size: 0.8rem; /* Размер шрифта */
+    position: absolute; /* Абсолютное позиционирование */
+    top: 15%; /* Положение по вертикали в центре */
+    left: 95%; /* Располагаем бейдж сразу справа от значка корзины */
+    transform: translate(-50%, -50%); /* Центрирование по вертикали и горизонтали */
+}
+
+.custom-navbar-bg {
+    background-color: rgb(3, 192, 3);
+}
+
+.custom-nav-link {
+    color: #ffffff; /* Пример: оранжевый цвет текста */
+}
