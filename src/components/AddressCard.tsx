@@ -2,6 +2,7 @@ import "../styles/AddressCard.css";
 import { FC, useState, useEffect } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import mockImage from "../assets/mock.png";
+import Buttons from "./AddDeleteButton";
 
 export interface Address {
     address_id: number;
@@ -57,7 +58,7 @@ const AddressCard: FC<{ address: Address, isMock: boolean }> = ({ address, isMoc
                     <Button href={`/application/${address.address_id}`} style={{color: '#000000', border: 0, backgroundColor: '#0dfa40'}}>Подробнее</Button>
                 </div>
                 <div className="button-2">
-                    <Button href={`/logical_delete/${address.address_id}`} style={{color: '#000000', border: 0, backgroundColor: '#0dfa40'}}>Удалить</Button>
+                    <Buttons address={address} />
                 </div> 
             </Card.Body>
         </Card>

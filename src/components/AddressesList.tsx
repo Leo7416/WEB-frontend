@@ -33,11 +33,18 @@ const AddressesList = () => {
     }
 
     const createMock = () => {
-
-        setIsMock(true);
-        setAddresses(AddressesMock);
-        
-    }
+        if (query !== '') {
+          const filteredAddresses = AddressesMock.filter(
+            (address) =>
+              address.town.toLowerCase().includes(query.toLowerCase()) ||
+              address.address.toLowerCase().includes(query.toLowerCase())
+          );
+          setAddresses(filteredAddresses);
+        } else {
+          setAddresses(AddressesMock);
+        }
+        setIsMock(true); 
+      };
 
     useEffect(() => {
         searchAddresses();
@@ -53,7 +60,7 @@ const AddressesList = () => {
 
     return (
         <div>
-            <header className='ul'><Breadcrumbs selectedAddress={ undefined } /></header>
+            <header className='menu-bar'><Breadcrumbs /></header>
             <SearchField setQuery={setQuery} />
             <div className='oval'></div>
             <div className="container">

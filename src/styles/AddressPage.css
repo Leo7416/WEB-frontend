@@ -11,9 +11,27 @@
     font-family: Tahoma;
   }
   
+  .card-container {
+    width: 50%; /* Ширина контейнера, можно настроить под ваши нужды */
+    margin: auto; /* Центрирование по горизонтали */
+    border: 2px solid #ddd; /* Границы контейнера */
+    padding: 20px; /* Внутренний отступ контейнера */
+    text-align: center; /* Выравнивание текста по центру */
+  }
+  
   .card_images_order {
     display: inline-block;
-    margin-top: 60px;
+    margin-top: 10px;
+  }
+  
+  .order-text {
+    margin-top: 20px;
+  }
+  
+  .water-meter-frame {
+    margin-top: 20px;
+    border: 2px solid #ddd; /* Границы блока с показаниями */
+    padding: 10px; /* Внутренний отступ блока с показаниями */
   }
   
   .card_images {
@@ -66,12 +84,12 @@
   }
   
   .oval-application {
-    height: 930px;
+    height: 900px;
     width: 330px;
     background: rgb(3, 192, 3);
     position: absolute;
     bottom: 10px;
-    right: 8px;
+    right: 0;
     background-image: url("/water_meter/static/images/12.png");
     background-position: bottom;
     background-repeat: no-repeat;
@@ -133,14 +151,23 @@
   }
   
   .water-meter-frame {
-    margin-top: 1%;
+    margin: 1% auto; /* Отступ сверху 1%, выравнивание по центру по горизонтали */
     width: 125px;
-    border: 2px solid #3498db; /* Ширина, стиль и цвет рамки */
-    padding: 10px; /* Отступы внутри рамки */
-    border-radius: 10px; /* Скругленные углы */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Тень */
-    background-color: #f2f2f2; /* Фоновый цвет рамки */
-    color: #333; /* Цвет текста внутри рамки */
+    border: 2px solid #3498db;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #f2f2f2;
+    color: #333;
     font-size: 30px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   }
+
+  .custom-navbar {
+    background-color: rgb(3, 192, 3);
+  }
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+  color: white; /* Устанавливаем белый цвет текста */
+}
