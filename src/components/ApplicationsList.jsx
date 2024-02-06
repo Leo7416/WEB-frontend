@@ -1,5 +1,6 @@
 import '../styles/ApplicationsList.css';
 import React from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from "react";
 import NavBar from './NavBar';
@@ -121,6 +122,9 @@ const ApplicationsList = () => {
         <div>
             <NavBar/>
             <Breadcrumbs />
+            <Link to='/application' className="buttonBack">
+                Назад
+            </Link>
             <div className='filter-container'>
                 <label><b>От: </b></label>
                 <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />

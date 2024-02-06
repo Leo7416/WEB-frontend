@@ -16,3 +16,16 @@
     border-radius: 4px;
     background-color: #CCFE7A;
 }
+
+.buttonBack {
+    display: inline-block;
+    background: #007bff;
+    color: #000000;
+    padding: 8px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: Tahoma;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 100;
+  }
