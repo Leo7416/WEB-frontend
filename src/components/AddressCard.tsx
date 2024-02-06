@@ -1,5 +1,6 @@
 import "../styles/AddressCard.css";
 import { FC, useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { Button, Card } from 'react-bootstrap';
 import mockImage from "../assets/mock.png";
 import Buttons from "./AddDeleteButton";
@@ -56,7 +57,9 @@ const AddressCard: FC<{ address: Address, isMock: boolean }> = ({ address, isMoc
                 <p className="card-text"> Адрес: {address.address} </p>
                 <p className="card-text-1"> Квартира: {address.apartment} </p>
                 <div className="button">
-                    <Button href={`/address/${address.address_id}`} style={{color: '#000000', border: 0, backgroundColor: '#0dfa40'}}>Подробнее</Button>
+                    <Link to='/address/${address.address_id}'>
+                        Подробнее
+                    </Link>
                 </div>
                 <div className="button-2">
                     <Buttons address={address} />
