@@ -14,6 +14,35 @@ const AddressesList = () => {
 
     const [isMock, setIsMock] = useState<boolean>(false);
 
+    const searchAddresses = async () => {
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/search/?query=${query}`, { method: "GET" });
+
+            if (!response.ok) {
+                createMock();
+                return;
+            }
+
+            const address: Address[] = await response.json();
+            setAddresses(address);
+            setIsMock(false);
+            
+        } catch (error) {
+            createMock();
+        }
+    }
+
+    const createMock = () => {
+
+        setIsMock(true);
+        setAddresses(AddressesMock);
+        
+    }
+
+    useEffect(() => {
+        searchAddresses();
+    }, [query])
+
     const cards = address.map(address  => (
         <AddressCard 
             key={address.address_id}
@@ -25,7 +54,7 @@ const AddressesList = () => {
     return (
         <div>
             <header className='ul'><Breadcrumbs selectedAddress={ undefined } /></header>
-            
+            <SearchField setQuery={setQuery} />
             <div className='oval'></div>
             <div className="container">
                 { cards }
