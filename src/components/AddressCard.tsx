@@ -57,7 +57,7 @@ const AddressCard: FC<{ address: Address, isMock: boolean }> = ({ address, isMoc
                 <p className="card-text"> Адрес: {address.address} </p>
                 <p className="card-text-1"> Квартира: {address.apartment} </p>
                 <div className="button">
-                    <Link to={`/address/${ address.address_id }`} className="black-link">
+                    <Link className="black-link" to={`/address/${ address.address_id }`}>
                         Подробнее
                     </Link>
                 </div>
