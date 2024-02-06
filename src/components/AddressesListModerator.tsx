@@ -32,14 +32,22 @@ const AddresssListModerator = () => {
     }
 
     const createMock = () => {
-
-        setAddresses(AddressesMock);
-
-    }
+        if (query !== '') {
+          const filteredAddresses = AddressesMock.filter(
+            (address) =>
+              address.town.toLowerCase().includes(query.toLowerCase()) ||
+              address.address.toLowerCase().includes(query.toLowerCase())
+          );
+          setAddresses(filteredAddresses);
+        } else {
+          setAddresses(AddressesMock);
+        }
+      };
 
     useEffect(() => {
         searchAddresses();
     }, [query])
+
 
     const handleDeleteClick = async (id: number) => {
         try {

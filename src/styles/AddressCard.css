@@ -54,13 +54,11 @@
     background: #0dfa40;
     padding: 6px;
     border: none;
-    border-radius: 18px;
-    text-decoration: none;
+    border-radius: 12px;
     font-family: Tahoma;
-    font-size: 22px;
-    line-height: 1;
+    font-size: 18px;
+    line-height: 2;
     font-weight: 130;
-    cursor: pointer;
     margin-left: 10px;
     margin-top: 70%;
   }
