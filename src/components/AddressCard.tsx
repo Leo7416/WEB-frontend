@@ -1,7 +1,7 @@
 import "../styles/AddressCard.css";
 import { FC, useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { Button, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import mockImage from "../assets/mock.png";
 import Buttons from "./AddDeleteButton";
 
