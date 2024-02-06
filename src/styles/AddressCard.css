@@ -52,7 +52,6 @@
   .button {
     display: inline-block;
     background: #0dfa40;
-    color: #000000;
     padding: 6px;
     border: none;
     border-radius: 18px;
@@ -60,7 +59,7 @@
     font-family: Tahoma;
     font-size: 22px;
     line-height: 1;
-    font-weight: 100;
+    font-weight: 130;
     cursor: pointer;
     margin-left: 10px;
     margin-top: 70%;
@@ -104,6 +103,10 @@
     clip-path: polygon(0 0, 0 220px, 0px 220px, 800px 0);
   }
   
+  .black-link {
+    color: black;
+    text-decoration: none; /* Чтобы убрать подчеркивание ссылки */
+  }
 
   
   
