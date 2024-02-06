@@ -1,11 +1,20 @@
 import '../styles/ApplicationsList.css';
 import React from "react";
+import { useSelector } from 'react-redux';
 import { useState, useEffect } from "react";
 import NavBar from './NavBar';
 import Breadcrumbs from './Breadcrumbs';
 
 
 const ApplicationsList = () => {
+
+    const [moderator, setModerator] = useState(false);
+
+    const { user: currentUser } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        setModerator(currentUser?.is_staff || currentUser?.is_admin);
+    }, [currentUser]);
 
     const [applications, setApplications] = useState([]);
 
@@ -58,6 +67,56 @@ const ApplicationsList = () => {
         setSelectedStatus(e.target.value);
     };
 
+    const handleAcceptClick = async (id) => {
+        try {
+            // Отправка запроса на бэкенд при нажатии
+            const response = await fetch(`http://127.0.0.1:8000/application/${id}/moderator/put/`, {
+                method: 'PUT',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json', // Указываем, что данные в формате JSON
+                },
+                body: JSON.stringify({
+                    meter_status: 'Одобрена',
+                }),
+            });
+
+            window.location.reload();
+
+            if (!response.ok) {
+                console.error(`Ошибка HTTP: ${response.status}`);
+            }
+
+        } catch (error) {
+                console.error('Произошла ошибка:', error);
+          }
+    };
+
+    const handleRejectClick = async (id) => {
+        try {
+            // Отправка запроса на бэкенд при нажатии
+            const response = await fetch(`http://127.0.0.1:8000/application/${id}/moderator/put/`, {
+                method: 'PUT',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json', // Указываем, что данные в формате JSON
+                },
+                body: JSON.stringify({
+                    meter_status: 'Отклонена',
+                }),
+            });
+
+            window.location.reload()
+
+            if (!response.ok) {
+                console.error(`Ошибка HTTP: ${response.status}`);
+            }
+
+        } catch (error) {
+                console.error('Произошла ошибка:', error);
+          }
+    };
+
     return (
         <div>
             <NavBar/>
@@ -85,7 +144,9 @@ const ApplicationsList = () => {
                 <th>Дата формирования</th>
                 <th>Дата завершения</th>
                 <th>Статус</th>
-
+                {moderator && (
+                    <th>Действия</th>
+                )}
                 </tr>
             </thead>
             <tbody>
@@ -97,6 +158,16 @@ const ApplicationsList = () => {
                     <td>{application.date_formation}</td>
                     <td>{application.date_completion}</td>
                     <td>{application.meter_status}</td>
+                    {moderator && (
+                        <td>
+                            {application.meter_status == 'Сформирована' && (
+                            <div>
+                                <button className="accept" onClick={() => handleAcceptClick(application.water_meter_reading_id)}>Принять</button>
+                                <button className="reject" onClick={() => handleRejectClick(application.water_meter_reading_id)}>Отклонить</button>
+                            </div>
+                            )}
+                        </td>
+                    )}
                 </tr>
                 ))}
             </tbody>

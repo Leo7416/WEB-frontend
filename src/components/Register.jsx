@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Link } from 'react-router-dom';
 import * as Yup from "yup";
 import { register } from "../slices/auth";
 import { clearMessage } from "../slices/message";
 import NavBar from "./NavBar";
+import Breadcrumbs from './Breadcrumbs';
 
 const Register = () => {
     const [successful, setSuccessful] = useState(false);
@@ -72,6 +74,7 @@ const Register = () => {
     return (
         <div>
             <NavBar />
+            <Breadcrumbs />
             <div className="col-md-6 signup-form">
                 <div className="card card-container">
                     <img
@@ -150,7 +153,13 @@ const Register = () => {
                                         Зарегистрироваться
                                     </button>
                                 </div>
+                                <div className="form-group">
+                                        <p>
+                                            Уже есть аккаунт?{" "}
+                                            <Link to="/login">Войти</Link>
+                                        </p>
                                 </div>
+                            </div>
                             )}
                         </Form>
                     )}

@@ -20,7 +20,7 @@
   .text_oval {
     position: absolute;
     width: 100%;
-    top: 1%;
+    top: 30px;
     text-align: center;
     font-size: 40px;
     color: white;

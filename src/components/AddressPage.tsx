@@ -46,9 +46,8 @@ const AddressPage: FC<{ selectedAddress: Address | undefined, setSelectedAddress
     const strImageUrl = `data:image/jpeg;base64,${ imageUrl }`;
 
     return (
-        <div>
-            <NavBar />
-            <body>
+            <div>
+                <NavBar />
                 <Breadcrumbs />
                 <div className="oval-application">
                     <p className="text-oval-application"> Доп информация о счётчиках: </p>
@@ -72,9 +71,7 @@ const AddressPage: FC<{ selectedAddress: Address | undefined, setSelectedAddress
                         Показаний считаются по последним трем цифрам
                     </p>
                 </div>
-            </body>
-        </div>
-        
+            </div>
     )
 }
 

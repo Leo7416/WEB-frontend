@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { login } from "../slices/auth";
 import { clearMessage } from "../slices/message";
 import NavBar from "./NavBar";
+import Breadcrumbs from './Breadcrumbs';
 
 const Login = () => {
     let navigate = useNavigate();
@@ -71,6 +72,7 @@ const Login = () => {
     return (
         <div>
           <NavBar />
+          <Breadcrumbs />
           <div className="col-md-6 login-form"> 
             <div className="card card-container">
               <img
@@ -131,6 +133,12 @@ const Login = () => {
                         )}
                         <span>Войти</span>
                       </button>
+                    </div>
+                    <div className="form-group">
+                        <p>
+                            Ещё нет аккаунта?{" "}
+                            <Link to="/register">Создать</Link>
+                        </p>
                     </div>
                   </Form>
                 )}

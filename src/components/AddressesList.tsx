@@ -62,7 +62,11 @@ const AddressesList = () => {
         <div>
             <header className='menu-bar'><Breadcrumbs /></header>
             <SearchField setQuery={setQuery} />
-            <div className='oval'></div>
+            <div className='oval'>
+                <div className='text_oval'>
+                    Показания счетчика воды
+                </div>
+            </div>
             <div className="container">
                 { cards }
             </div>

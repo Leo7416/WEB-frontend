@@ -47,8 +47,8 @@ export const deleteAddress = (id) => async (dispatch) => {
 
 export const sendApplication = (data) => async (dispatch) => {
 
-    axios.put(`http://127.0.0.1:8000/application/${data[0].meter_id}/user/put/`, null, { withCredentials: true }),
-    axios.post(`http://127.0.0.1:9000/was/`, { data: data }, { headers: { 'Content-Type': 'application/json' }}, { withCredentials: true })
+    axios.put(`http://127.0.0.1:8000/application/${data[0].meter_id}/user/put/`, null, { withCredentials: true })
+    axios.post(`http://127.0.0.1:9000/price/`, { data: data }, { headers: { 'Content-Type': 'application/json' }}, { withCredentials: true })
 
     dispatch(sendApplAction());
 }

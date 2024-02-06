@@ -13,7 +13,7 @@ const Breadcrumbs: FC = () => {
   const topics: { [key: string]: string } = {
       "post": "Создать",
       "update": "Редактировать",
-      "addresses": "Доступное время",
+      "addresses": "Доступные адреса",
       "application": "Черновик",
       "all": "Все заявки",
       "login": "Вход",

@@ -4,7 +4,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AddressList from './components/AddressesList'
 import AddressPage from './components/AddressPage';
 import Application from './components/Application';
+import AddressAdd from './components/AddressAdd'
 import ApplicationsList from './components/ApplicationsList';
+import AddressesListModerator from './components/AddressesListModerator';
+import AddressUpdate from './components/AddressUpdate'
 import Login from "./components/LogIn";
 import Register from "./components/Register";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,13 +17,15 @@ const App = () => {
     const [selectedAddress, setSelectedAddress] = useState(undefined);
 
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
             <div>
                 <div>
                     <Routes>
                     <Route path='/' element={<AddressList />} />
-                    <Route path='/application/:address_id' element={<AddressPage selectedAddress={selectedAddress} setSelectedAddress={setSelectedAddress} />} />
-                    <Route path='/logical_delete/:address_id' element={<AddressList />} />
+                    <Route path='/addresses/update/:address_id' element={ <AddressUpdate /> } />
+                    <Route path='/addresses/post' element={ <AddressAdd/> } />
+                    <Route path='/addresses' element={ <AddressesListModerator/> } />
+                    <Route path='/address/:address_id' element={<AddressPage selectedAddress={selectedAddress} setSelectedAddress={setSelectedAddress} />} />
                     <Route path="/login" element={ <Login /> } />
                     <Route path="/register" element={ <Register /> } />
                     <Route path='/application' element={ <Application /> } />

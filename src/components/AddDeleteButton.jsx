@@ -56,9 +56,12 @@ const Buttons = ({ address }) => {
             ) : (currentUser ? (
                 <button className='add' onClick={handleAddClick}>Добавить</button>
             ) : (
-                <Link to='/login' className='add'>
-                    Добавить
-                </Link>
+                <button className='add'>
+                    <Link to='/login' className='black-link'>
+                        Добавить
+                    </Link>
+                </button>
+                
             ))}
         </div>
     );
