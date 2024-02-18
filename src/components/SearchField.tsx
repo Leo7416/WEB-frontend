@@ -14,6 +14,7 @@ const SearchField: FC<{ setQuery: Dispatch<string> }> = ({ setQuery }) => {
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
         if (event.key === 'Enter') {
+            event.preventDefault();
             handleClick();
         }
     };

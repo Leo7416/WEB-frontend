@@ -54,11 +54,8 @@ const AddressCard: FC<{ address: Address, isMock: boolean }> = ({ address, isMoc
                 <p className="card-text"> Адрес: {address.address} </p>
                 <p className="card-text-1"> Квартира: {address.apartment} </p>
                 <div className="button">
-                    <Button href={`/application/${address.address_id}`} style={{color: '#000000', border: 0, backgroundColor: '#0dfa40'}}>Подробнее</Button>
+                    <Button href={`/address/${address.address_id}`} style={{color: '#000000', border: 0, backgroundColor: '#0dfa40'}}>Подробнее</Button>
                 </div>
-                <div className="button-2">
-                    <Button href={`/logical_delete/${address.address_id}`} style={{color: '#000000', border: 0, backgroundColor: '#0dfa40'}}>Удалить</Button>
-                </div> 
             </Card.Body>
         </Card>
     );

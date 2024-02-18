@@ -5,6 +5,7 @@ import AddressCard from "./AddressCard";
 import { AddressesMock } from '../Mock';
 import SearchField from './SearchField';
 import Breadcrumbs from './Breadcrumbs';
+import NavBar from './NavBar';
 
 const AddressesList = () => {
 
@@ -33,11 +34,18 @@ const AddressesList = () => {
     }
 
     const createMock = () => {
-
-        setIsMock(true);
-        setAddresses(AddressesMock);
-        
-    }
+        if (query !== '') {
+          const filteredAddresses = AddressesMock.filter(
+            (address) =>
+              address.town.toLowerCase().includes(query.toLowerCase()) ||
+              address.address.toLowerCase().includes(query.toLowerCase())
+          );
+          setAddresses(filteredAddresses);
+        } else {
+          setAddresses(AddressesMock);
+        }
+        setIsMock(true); 
+      };
 
     useEffect(() => {
         searchAddresses();
@@ -53,9 +61,14 @@ const AddressesList = () => {
 
     return (
         <div>
-            <header className='ul'><Breadcrumbs selectedAddress={ undefined } /></header>
+            <NavBar />
             <SearchField setQuery={setQuery} />
-            <div className='oval'></div>
+            <Breadcrumbs />
+            <div className='oval'>
+                <div className='text_oval'>
+                    Показания счетчика воды
+                </div>
+            </div>
             <div className="container">
                 { cards }
             </div>

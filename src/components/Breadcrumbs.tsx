@@ -1,43 +1,65 @@
-import '../styles/Breadcrumbs.css';
-import { FC } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { FaChevronRight, FaHome } from 'react-icons/fa';
-import { Address } from './AddressCard'; // Import the Address interface
+  import '../styles/Breadcrumbs.css';
+  import { FC } from 'react';
+  import { Link, useLocation } from "react-router-dom";
+  import { FaChevronRight } from "react-icons/fa6";
+  import { FaHome } from "react-icons/fa";
 
-const Breadcrumbs: FC<{ selectedAddress: Address | undefined }> = ({ selectedAddress }) => {
-  const location = useLocation();
-  let currentLink = '';
+  const Breadcrumbs: FC = () => {
 
-  const crumbs = location.pathname
-    .split('/')
-    .filter(crumb => crumb !== '')
-    .map(crumb => {
-      currentLink += `/${crumb}`;
+    const location = useLocation();
 
-      if (currentLink.match(new RegExp('address/(\d*)'))) {
-        return (
-          <div className="crumb" key={crumb}>
-            <Link to={currentLink}>
-              {selectedAddress?.town}, {selectedAddress?.address}
-            </Link>
-            <FaChevronRight className="chevron-icon" />
-          </div>
-        );
-      }
-      return null; // Return null for non-address crumbs
+    let currentLink = '';
+
+    const topics: { [key: string]: string } = {
+        
+    };
+
+    const crumbs = location.pathname.split('/').filter(crumb => crumb !== '').map(crumb => {
+
+        currentLink += `/${crumb}`;
+
+        const matchResult = currentLink.match(/address\/(\d+)$/);
+
+        if (matchResult) {
+
+            const addressNumber = matchResult[1];
+
+            return (
+                <div className={"crumb"} key={crumb}>
+                    <FaChevronRight className={"chevron-icon"}/>
+                    <Link to={currentLink}>
+                        Доступный адрес №{addressNumber}
+                    </Link>
+                </div>
+            )
+        }
+
+        if (Object.keys(topics).find(x => x == crumb))
+        {
+            return (
+                <div className={"crumb"} key={crumb}>
+
+                    <FaChevronRight className={"chevron-icon"}/>
+
+                    <Link to={currentLink}>
+                        { topics[crumb] }
+                    </Link>
+
+                </div>
+            )
+        }
     });
 
-  return (
-    <div className="breadcrumbs">
-      <div className="crumb">
-        <Link to={'/'}>
-          <FaHome className="home-icon" />
-        </Link>
-        <FaChevronRight className="chevron-icon" />
-      </div>
-      {crumbs}
-    </div>
-  );
-};
+    return (
+        <div className="breadcrumbs">
+            <div className="crumb">
+                <Link to={"/"}>
+                    <FaHome className="home-icon" />
+                </Link>
+            </div>
+            {crumbs}
+        </div>
+    )
+  }
 
-export default Breadcrumbs;
+  export default Breadcrumbs;

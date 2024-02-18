@@ -54,7 +54,7 @@ const AddressPage: FC<{ selectedAddress: Address | undefined, setSelectedAddress
     return (
         <div>
             <NavBar />
-            <Breadcrumbs selectedAddress={selectedAddress} />
+            <Breadcrumbs />
             <div className="oval-application">
                 <p className="text-oval-application"> Способы узнать показаний счетчиков: </p>
                 <div className="box"> портал услуг Москвы - mos.ru </div>
