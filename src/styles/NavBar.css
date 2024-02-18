@@ -30,3 +30,7 @@
 .custom-nav-link {
     color: #ffffff; /* Пример: оранжевый цвет текста */
 }
+
+.cart-size {
+    font-size: 30px;
+}

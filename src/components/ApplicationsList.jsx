@@ -122,9 +122,6 @@ const ApplicationsList = () => {
         <div>
             <NavBar/>
             <Breadcrumbs />
-            <Link to='/application' className="buttonBack">
-                Назад
-            </Link>
             <div className='filter-container'>
                 <label><b>От: </b></label>
                 <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />

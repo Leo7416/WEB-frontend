@@ -5,6 +5,7 @@ import AddressCard from "./AddressCard";
 import { AddressesMock } from '../Mock';
 import SearchField from './SearchField';
 import Breadcrumbs from './Breadcrumbs';
+import NavBar from './NavBar';
 
 const AddressesList = () => {
 
@@ -60,8 +61,9 @@ const AddressesList = () => {
 
     return (
         <div>
-            <header className='menu-bar'><Breadcrumbs /></header>
+            <NavBar />
             <SearchField setQuery={setQuery} />
+            <Breadcrumbs />
             <div className='oval'>
                 <div className='text_oval'>
                     Показания счетчика воды

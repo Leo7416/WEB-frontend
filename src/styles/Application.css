@@ -58,3 +58,12 @@
 .my-applications-link:hover {
   text-decoration: none;
 }
+
+.delete-button-apllication {
+  background-color: #cc3131;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}

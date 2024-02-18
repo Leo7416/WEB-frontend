@@ -1,45 +1,28 @@
 import '../styles/Application.css';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import {deleteAddress, sendApplication, useData} from "../slices/dataSlice";
-import {useDispatch} from "react-redux";
-import {GetData} from "../getData";
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { deleteAddress, sendApplication, useData, deleteApplication } from "../slices/dataSlice";
+import { useDispatch } from "react-redux";
+import { GetData } from "../getData";
 import NavBar from './NavBar';
 import Breadcrumbs from './Breadcrumbs';
 
-
 export default function Application() {
-
-// Функция для получения значения конкретной куки по ее имени
-    function getCookie(name) {
-        const cookies = document.cookie.split(';');
-
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-
-            if (cookie.startsWith(name + '=')) {
-                return cookie.substring(name.length + 1);
-            }
-        }
-
-        return null;
-    }
-
-    const sessionId = getCookie('session_id');
-    const dispatch = useDispatch()
-    GetData()  // вызов хука
-    const data = useData()
+    const dispatch = useDispatch();
+    const { water_meter_reading_id } = useParams(); // Получение water_meter_reading_id из маршрута
+    GetData(water_meter_reading_id);
+    const data = useData();
 
     return (
         <div>
             <NavBar />
             <Breadcrumbs />
-            <Link to='/applications/all' className="my-applications-link">
+            <Link to='/application/all' className="my-applications-link">
                 Все заявки
             </Link>
             <div className="shopping-cart-container">
                 {data.map((address) => (
-                    <div key={address.address_id} className="address-item">
+                    <div key={address.water_meter_reading_id} className="address-item">
                         <p>{address.town}</p>
                         <p>Адрес: {address.address}</p>
                         <p>Квартира: {address.apartment}</p>
@@ -48,7 +31,7 @@ export default function Application() {
                             onClick={() => {
                                 dispatch(deleteAddress(address.address_id));
                             }}
-                          >
+                        >
                             Удалить
                         </button>
                     </div>
@@ -60,8 +43,21 @@ export default function Application() {
                             onClick={() => {
                                 dispatch(sendApplication(data));
                             }}
-                          >
+                        >
                             Сформировать
+                        </button>
+                    </div>
+                )}
+
+                {data.length > 0 && (
+                    <div>
+                        <button
+                            className="delete-button-apllication"
+                            onClick={() => {
+                                dispatch(deleteApplication(water_meter_reading_id));
+                            }}
+                        >
+                            Удалить все
                         </button>
                     </div>
                 )}

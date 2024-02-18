@@ -28,8 +28,8 @@ const App = () => {
                     <Route path='/address/:address_id' element={<AddressPage selectedAddress={selectedAddress} setSelectedAddress={setSelectedAddress} />} />
                     <Route path="/login" element={ <Login /> } />
                     <Route path="/register" element={ <Register /> } />
-                    <Route path='/application' element={ <Application /> } />
-                    <Route path='/applications/all' element={ <ApplicationsList/> } />
+                    <Route path="/application/:water_meter_reading_id" element={ <Application/> } />
+                    <Route path='/application/all' element={ <ApplicationsList/> } />
                     </Routes>
                 </div>
             </div>

@@ -24,7 +24,14 @@ const dataSlice = createSlice({
             const { id } = payload;
             state.Data.push({ address_id }); // добавляем новый объект с указанным id
             console.log(id);
-        }
+        },
+        deleteAppl(state, action) {
+            const { water_meter_reading_id } = action.payload;
+            // Удаляем заявку из состояния
+            state.Data = state.Data.filter(
+              (application) => application.water_meter_reading_id !== water_meter_reading_id
+            );
+          },
     }
 })
 
@@ -35,7 +42,8 @@ export const {
     setData: setDataAction,
     sendAppl: sendApplAction,
     delAddress: delAddressAction,
-    sendAddress: sendAddressAction
+    sendAddress: sendAddressAction,
+    deleteAppl: deleteApplAction
 } = dataSlice.actions
 
 export const deleteAddress = (id) => async (dispatch) => {
@@ -60,5 +68,12 @@ export const sendAddress = (id) => async (dispatch) => {
     dispatch(sendAddressAction({ id }));
 }
 
+export const deleteApplication = (water_meter_reading_id) => async (dispatch) => {
+    await axios.delete(`http://127.0.0.1:8000/application/${water_meter_reading_id}/delete/`, {
+        withCredentials: true,
+      });
+      // Если удаление прошло успешно, отправляем действие для обновления состояния
+      dispatch(deleteApplAction({ water_meter_reading_id }));
+  };
 
 export default dataSlice.reducer

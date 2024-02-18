@@ -3,7 +3,7 @@ import React, { FC, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { updateUser } from '../slices/auth';
-import { GetData } from '../getData';
+import { GetData, GetID } from '../getData';
 import { useData, deleteAddress, sendAddress } from '../slices/dataSlice';
 
 
@@ -38,6 +38,10 @@ const Buttons = ({ address }) => {
         setIsActiveAdd(false);
 
         dispatch(sendAddress(address.address_id))
+        .then(() => {
+            // Обновляем meterID после успешного добавления
+            GetID();
+        });
 
     };
 

@@ -1,46 +1,44 @@
-import '../styles/SearchField.css';
-import { FC, useState, Dispatch } from 'react';
+import { FC, useState } from 'react';
 
-const SearchField: FC<{ setQuery: Dispatch<string> }> = ({ setQuery }) => {
-    const [value, setValue] = useState<string>('');
+interface Props {
+  setQuery: (query: string) => void;
+}
 
-    const handleChange = (value: string) => {
-        setValue(value);
-    };
+const SearchField: FC<Props> = ({ setQuery }) => {
+  const [value, setValue] = useState<string>('');
 
-    const handleClick = () => {
-        setQuery(value);
-    };
+  const handleClick = () => {
+    setQuery(value);
+  };
 
-    const handleKeyDown = (event: React.KeyboardEvent) => {
-        if (event.key === 'Enter') {
-            handleClick();
-        }
-    };
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // Предотвращаем стандартное поведение формы
+      handleClick();
+    }
+  };
 
-    return (
-        <>
-            <div className="lower">
-                <h2>Поиск по адресам</h2>
-                <form action="/query" method="get">
-                    {/* {% csrf_token %} - This looks like a Django template syntax,
-                    ensure it's rendered properly in the Django template */}
-                    <label>Название улицы:</label>
-                    <input
-                        name="query"
-                        type="text"
-                        placeholder="Введите что-нибудь"
-                        value={value}
-                        onChange={(e) => handleChange(e.target.value)}
-                        onKeyDown={handleKeyDown}
-                    />
-                    <button type="button" onClick={handleClick}>
-                        Найти
-                    </button>
-                </form>
-            </div>
-        </>
-    );
+  return (
+    <>
+      <div className="lower">
+        <h2>Поиск по адресам</h2>
+        <form action="/query" method="get">
+          <label>Название улицы:</label>
+          <input
+            name="query"
+            type="text"
+            placeholder="Введите что-нибудь"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+          <button type="button" onClick={handleClick}>
+            Найти
+          </button>
+        </form>
+      </div>
+    </>
+  );
 };
 
 export default SearchField;

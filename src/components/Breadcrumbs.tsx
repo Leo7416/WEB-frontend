@@ -14,7 +14,7 @@ const Breadcrumbs: FC = () => {
       "post": "Создать",
       "update": "Редактировать",
       "addresses": "Доступные адреса",
-      "application": "Черновик",
+      "application": "Корзина",
       "all": "Все заявки",
       "login": "Вход",
       "register": "Регистрация"
