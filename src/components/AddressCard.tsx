@@ -18,7 +18,7 @@ const AddressCard: FC<{ address: Address, isMock: boolean }> = ({ address, isMoc
     const [imageUrl, setImageUrl] = useState<string>(''); 
 
     const getImageUrl = async (address_id: number): Promise<string> => {    
-        const response = await fetch(`http://127.0.0.1:8000/address/${address_id}/images`, { method: 'GET' });
+        const response = await fetch(`http://127.0.0.1:8000/address/${address_id}/images/get`, { method: 'GET' });
     
         if (!response.ok) {
             console.error(`Ошибка HTTP: ${ response.status }`);
@@ -54,7 +54,7 @@ const AddressCard: FC<{ address: Address, isMock: boolean }> = ({ address, isMoc
                 <p className="card-text"> Адрес: {address.address} </p>
                 <p className="card-text-1"> Квартира: {address.apartment} </p>
                 <div className="button">
-                    <Button href={`/address/${address.address_id}`} style={{color: '#000000', border: 0, backgroundColor: '#0dfa40'}}>Подробнее</Button>
+                    <Button href={`/WEB-frontend/address/${address.address_id}`} style={{color: '#000000', border: 0, backgroundColor: '#0dfa40'}}>Подробнее</Button>
                 </div>
             </Card.Body>
         </Card>
